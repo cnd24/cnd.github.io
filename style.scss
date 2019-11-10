@@ -1,0 +1,82 @@
+// ----
+// libsass (v3.5.4)
+// ----
+
+$primary-color : #ff5f01;
+$secondary-color: #fecf12;
+$grey: #A9A9A9;
+
+@mixin ring($size, $color){
+  background-color: transparent;
+  border-radius:50%;
+  width:$size;
+  height:$size;
+  border:$size/10 solid $color; 
+  margin: 10px;
+  box-shadow: 3px 3px $size/10 0 $color;
+}
+
+@mixin flexCenter(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+body, html {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+}
+
+.topbar {
+    background-color: $primary-color;
+    padding: 10px;
+    
+    li{
+      display: inline-block;
+      color: white;
+      padding: 0 10px;
+    }
+}
+section {
+  @include flexCenter();
+}
+
+.ringOne{
+  @include ring(30px, $primary-color);
+}
+
+.bigRing{
+  @include ring(100px, $secondary-color);
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    background-color: $primary-color;
+    padding: 10px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    a {
+      padding: 0 10px;
+      text-decoration: none;
+      color: #eee;
+      text-align: left;
+    }
+}
+
+@for $i from 1 through 6 {
+  .findIt>div:nth-child(#{$i}) {
+    @include ring($i*10px, $grey);
+    margin-left : -8px * $i;
+    margin-right : 7px * $i;
+    margin-bottom : 20px;
+    margin-top : 20px;
+  }
+}
